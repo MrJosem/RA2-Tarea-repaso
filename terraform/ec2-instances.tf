@@ -8,6 +8,6 @@ resource "aws_instance" "debian" {
   user_data              = file("user_data.sh")
 
   tags = {
-    Name = "${var.name}"
+    Name = "ec2-debian"
   }
 }
