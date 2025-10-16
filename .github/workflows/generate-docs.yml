@@ -32,7 +32,7 @@ jobs:
 
       - name: Generar docs
         working-directory: ./src
-        run: npx jsdoc ./src/main.js
+        run: npx jsdoc main.js
 
       - name: Push changes
         run: |
