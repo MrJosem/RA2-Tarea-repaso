@@ -20,7 +20,7 @@ services:
   apache:
     image: httpd:latest
     ports:
-      - 8080:80
+      - 8080:80"
 
       
 
