@@ -8,3 +8,8 @@ provider "aws" {
   secret_key = var.secret_key
   token      = var.session_token
 }
+
+resource "aws_key_pair" "debian_pub" {
+  key_name = "debian_pub"
+  public_key = file("debian.pub")
+}

@@ -4,6 +4,16 @@ variable "aws_region" {
   type        = string
 }
 
+variable "ami_id" {
+  description = "ID of the AMI to provision. Default is Ubuntu 14.04 Base Image"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "type of EC2 instance to provision."
+  type = string
+}
+
 variable "name" {
   description = "Bucket name"
   type        = string
