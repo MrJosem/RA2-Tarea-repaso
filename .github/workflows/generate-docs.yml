@@ -1,0 +1,43 @@
+name: "Generación docs React"
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: "Select the deployment environment"
+        options:
+          - docs
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Instalaciones redundantes
+        run: |
+          npm install -D jsdoc-babel
+
+      - name: Generar docs
+        working-directory: ./src
+        run: npx jsdoc ./src/main.js
+
+      - name: Push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Automated update from GitHub Actions"
+          git push origin main
