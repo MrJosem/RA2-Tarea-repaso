@@ -1,0 +1,5 @@
+aws_region    = "us-east-1"
+name          = "bucket-s3-jose-manuel"
+access_key    = ""
+secret_key    = ""
+session_token = ""
