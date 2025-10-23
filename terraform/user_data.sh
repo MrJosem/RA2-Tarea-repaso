@@ -13,15 +13,16 @@ sudo systemctl enable docker
 sudo systemctl start docker
 
 cd /home/admin
-touch docker-compose.yml
+touch Dockerfile
 
-echo -e "version: '3.8'
-services:
-  apache:
-    image: httpd:latest
-    ports:
-      - 8080:80"
+echo -e "FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && \
+    apt-get install -y apache2 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+EXPOSE 80
+CMD ["apachectl", "-D", "FOREGROUND"]" > Dockerfile
 
-      
-
-sudo docker-compose up
+sudo docker build -t ubuntu-apache .
+sudo docker run -d -p 8080:80 --name my-apache ubuntu-apache
