@@ -22,6 +22,9 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 EXPOSE 80
+VOLUME /var/www/html/otro
+VOLUME /etc/apache2
+VOLUME /etc/apache2/sites-available
 CMD ["apachectl", "-D", "FOREGROUND"]" > Dockerfile
 
 sudo docker build -t ubuntu-apache .
