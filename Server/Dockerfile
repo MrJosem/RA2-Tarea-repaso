@@ -13,5 +13,13 @@ RUN apt-get update && \
 # Expone el puerto 80 dentro del contenedor
 EXPOSE 80
 
+# Copia los archivos necesarios al contenedor desde el host
+COPY otro_vh_html/ /var/www/html/otro
+COPY apache2_conf/ /etc/apache2
+COPY vh_conf/ /etc/apache2/sites-available
+
+# Habilita el segundo host-virtual
+RUN a2ensite otro-default.conf
+
 # Comando para mantener Apache corriendo en primer plano
-CMD ["apachectl", "-D", "FOREGROUND"]
+CMD ["usr/sbin/apachectl", "-D", "FOREGROUND"]
