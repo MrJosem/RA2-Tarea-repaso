@@ -69,4 +69,19 @@ Por último dentro de apache2.conf siguiente directiva para habilitar Multiviews
     Options +Multiviews
 </Directory>
 
-8. 
+8. Simplemente copiar el archivo default de host-virtual y cambiar una o dos cosas: El puerto y el DocumentRoot o solo una de las dos. Luego habilitar con el comando "a2ensite <NOMBRE_ARCHIVO_HOST_VIRTUAL>"
+
+
+
+
+11. Copiar archivo por defecto de SSL/apache2 y escribir lo siguiente:
+- ServerName <NOMBRE_DE_DOMINIO> (DNSExit)
+- Cambiar rutas predefinidas para los siguientes archivos: ca.cer, MI_DOMINIO.key y MI_DOMINIO.cer
+- ca.cer irá dentro de /etc/ssl/certs - MI_DOMINIO.key irá dentro de /etc/ssl/private y el otro igual que ca.cer
+- Para ca.cer descomentar la directiva "SSLCertificateChainFile"
+
+Después dentro del archivo de virtual-host que usamos para HTTP (80/8080 - 000-default.conf o el que sea) escribimos la redirección: 	Redirect permanent / https://joseapache.work.gd:8443
+
+¡Importante usar el puerto porque estamos en contenedores!
+
+Hecho esto, habilitar el sitio con "a2ensite" y el módulo SSL -> <a2enmod ssl>
