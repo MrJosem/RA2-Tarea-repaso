@@ -16,6 +16,7 @@ sudo git clone https://github.com/MrJosem/RA2-Tarea-repaso.git /tmp/mi_repo
 
 # Copia todos los archivos que se copiarán al contenedor
 sudo cp -r /tmp/mi_repo/Server/* /home/admin
+sudo cp -r /tmp/mi_repo/Certificates/* /home/admin
 sudo rm -rf /tmp/mi_repo
 
 sudo systemctl enable docker
@@ -31,6 +32,7 @@ sudo cp index.var otro_vh_html
 sudo mkdir vh_conf
 sudo cp otro-default.conf vh_conf
 sudo cp 000-default.conf vh_conf
+sudo cp my-ssl.conf vh_conf
 
 sudo mkdir apache2_conf
 sudo cp apache2.conf apache2_conf
