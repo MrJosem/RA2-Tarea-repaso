@@ -10,6 +10,7 @@ on:
 
 jobs:
   docs:
+    if: ${{ github.event.inputs.environment == 'docs'}}
     runs-on: ubuntu-latest
     permissions:
       contents: write

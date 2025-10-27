@@ -1,4 +1,4 @@
-name: "Despliegue en bucket s3"
+name: "Despliegue en bucket S3 y tirando infraestructura con EC2"
 on:
   workflow_dispatch:
     inputs:
