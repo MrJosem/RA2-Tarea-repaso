@@ -20,6 +20,7 @@ COPY vh_conf/ /etc/apache2/sites-available
 COPY ca.cer /etc/ssl/certs/ca.cer
 COPY joseapache.work.gd.key /etc/ssl/private/joseapache.work.gd.key
 COPY joseapache.work.gd.cer /etc/ssl/certs/joseapache.work.gd.cer
+COPY error404.html /var/www/html
 
 # Habilita el segundo host-virtual
 RUN a2ensite otro-default.conf
